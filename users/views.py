@@ -10,8 +10,8 @@ def register(request):
         if form.is_valid():
             form.save() # admin wala site ma save hunxa 
             username = form.cleaned_data.get('username')
-            messages.success(request, f'Account Created for {username} !')
-            return redirect('web-home')
+            messages.success(request, f'Account Created for {username} , You can LogIn now!')
+            return redirect('login')
     else:
         form = UserRegisterForm() # empty post 
 
