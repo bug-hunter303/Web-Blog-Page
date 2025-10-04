@@ -125,8 +125,8 @@ STATICFILES_DIRS = [
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
-LOGIN_REDIRECT_URL = "web-home"
-LOGOUT_REDIRECT_URL = "logout"
+LOGIN_REDIRECT_URL = "web-home" 
+LOGIN_URL = "login"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

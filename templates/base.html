@@ -35,16 +35,19 @@
                     <!-- Navbar Right Side -->
                     <div class="navbar-nav">
                         {% if user.is_authenticated %}
-                            <form action="{% url 'logout' %}" method="post">
+                        <div style="display: flex; align-items: center; gap: 14px;">
+                            <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+                            <form action="{% url 'logout' %}" method="post" style="display: inline;">
                                 {% csrf_token %}
                                 <button type="submit" class="nav-item nav-link" style="background:none; border:none; padding:0;">
                                     Logout
                                 </button>
                             </form>
-
+                        </div>
                         {% else %}
                             <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
                             <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+
                         {% endif %}
                     </div>
                 </div>
