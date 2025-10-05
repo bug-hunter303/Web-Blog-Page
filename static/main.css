@@ -82,3 +82,36 @@ a.article-title:hover {
 .account-heading {
   font-size: 2.5rem;
 }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-family: Arial, sans-serif;
+}
+
+.pagination a, .pagination span {
+    display: inline-block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #155724; /* dark green text */
+    border: 1px solid #c3e6cb; /* light green border */
+    border-radius: 5px;
+    transition: all 0.2s;
+}
+
+.pagination a:hover {
+    background-color: #28a745; /* bright green */
+    color: white;
+    border-color: #28a745;
+}
+
+.pagination .current {
+    background-color: #28a745; /* bright green */
+    color: white;
+    border-color: #28a745;
+    font-weight: bold;
+}

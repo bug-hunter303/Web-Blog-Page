@@ -8,4 +8,5 @@ urlpatterns = [
     path('create/',views.create,name='web-create'),
     path('update/<int:pk>/',views.update,name='web-update'),
     path('delete/<int:pk>',views.delete,name='web-delete'),
+    path('user/<str:username>/',views.user_home, name='user-home'),
 ]

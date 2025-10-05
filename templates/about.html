@@ -1,6 +1,34 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
-<h1>About Page</h1>
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+<script src="{% static 'js/about.js' %}" defer></script>
+
+
+<div class="about-wrapper">
+  <h1 class="about-title">About This Project</h1>
+
+  <div class="about-card">
+    <p class="about-text">
+      To whoever reading this — thank you for checking out my project! 🌱<br><br>
+      This is my <strong>first Django project</strong>, and it took about a week of learning, trial and errors to get everything running.  
+      I followed a YouTube tutorial for the core structure, but implemented FBV (Function-Based Views) by myself instead of CBV (this was used in the tutorial) 
+      and added my own logic and design touches.<br><br>
+      I also used <strong>AI tools like Perplexity</strong> to improve my CSS and HTML.  
+      Through this project, I've learned a lot — from setting up models and forms to managing logins and pagination.  
+      It made me much more confident in Django, but I still revisit the code to refresh things sometimes as I get confused in making models , views (especially logins/ forms ) 😅.<br><br>
+      I'm excited to keep improving and building even better projects in the future!  
+      <br><br>
+      <span class="highlight">Thanks for reading until here </span><br>
+      Do give me feedback if possible — have a great day ahead!
+    </p>
+  </div>
+
+  <div class="about-footer">
+    <button id="thankButton">Click Me 🌟</button>
+    <p id="message" class="hidden">You're awesome! 🚀 Thanks for visiting! <br> btw this was done by me myself (learned it from tiktok)</p>
+  </div>
+</div>
+
 
 {% endblock content %}

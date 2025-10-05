@@ -4,13 +4,36 @@ from .models import Post
 from web.forms import PostForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
+from django.contrib.auth.models import User
 
 
 def home(request):
+    posts_list = Post.objects.all().order_by("-date_posted")
+
+    paginator = Paginator(posts_list,5)
+    page_number = request.GET.get('page')
+    posts = paginator.get_page(page_number)
+
     context = {
-        'posts': Post.objects.all().order_by("-date_posted")
+        'posts': posts
     }
     return render(request, 'home.html', context)
+
+def user_home(request, username):
+    user = get_object_or_404(User, username=username)
+    posts_list = Post.objects.filter(author=user).order_by("-date_posted")
+
+    paginator = Paginator(posts_list, 5)
+    page_number = request.GET.get('page')
+    posts = paginator.get_page(page_number)
+
+    context = {
+        'posts': posts,
+        'user': user,
+        'post_count': posts_list.count()
+    }
+    return render(request, 'user_home.html', context)
 
 def about(request):
     return render(request, 'about.html',{'title': 'About'})
