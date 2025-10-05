@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Post
 from web.forms import PostForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
@@ -26,6 +27,7 @@ def detail(request , pk):
 
     return render(request , 'detail.html',context)
 
+@login_required
 def create(request):
     
     if request.method == "GET":
@@ -38,9 +40,43 @@ def create(request):
             post.save()
             messages.success(request, 'The post has been created successfully')
             return redirect('web-home')
+        else:
+            return render(
+                request,
+                'create.html',
+                {'form': form}
+            )
     
     return render(
         request,
         'create.html',
         {'form': form}
+    )
+
+@login_required
+def update(request , pk):
+    post = Post.objects.get(pk = pk)
+    if post.author != request.user:
+        messages.error(request, "You are not allowed to edit someone else's post.BRUH!")
+        return redirect('web-home')
+    
+    if request.method == "GET":
+        form = PostForm(instance=post)
+    else:
+        form = PostForm(request.POST , instance= post)
+        if form.is_valid():
+            post = form.save()
+            messages.success(request, 'The post has been updated successfully')
+            return redirect('web-detail' ,post.pk)
+        else:
+            return render(
+                request,
+                'create.html',
+                {'form': form, 'post': post}
+                )
+    
+    return render(
+        request,
+        'create.html',
+        {'form': form , 'post': post}
     )

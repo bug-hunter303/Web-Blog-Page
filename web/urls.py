@@ -6,4 +6,5 @@ urlpatterns = [
     path('about/',views.about, name='web-about'),
     path('detail/<int:pk>/',views.detail,name='web-detail'),
     path('create/',views.create,name='web-create'),
+    path('update/<int:pk>/',views.update,name='web-update'),
 ]
