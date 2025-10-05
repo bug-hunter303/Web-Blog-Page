@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
  <h1 class="mb-4">Posts by {{ user.username }} ({{ post_count }})</h1>
     {% for post in posts %}
         <article class="media content-section">

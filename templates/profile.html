@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
 {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+   
     <div class="content-section">
         <div class="media">
             <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
