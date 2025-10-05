@@ -80,3 +80,13 @@ def update(request , pk):
         'create.html',
         {'form': form , 'post': post}
     )
+
+@login_required
+def delete(request , pk):
+    post = Post.objects.get(pk = pk)
+    if post.author != request.user:
+        messages.error(request,"You can't delete someone else's post. BRUH !")
+        return redirect('web-home')
+    post.delete()
+    messages.success(request, "Post Deleted Successfully!")
+    return redirect('web-home')
